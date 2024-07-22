@@ -123,6 +123,6 @@ app.post("/post/react", async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || PORT, HOST, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
