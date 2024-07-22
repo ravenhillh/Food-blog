@@ -1,0 +1,3 @@
+web: nodemon server/index.js
+cd: cd client/blog
+build: npm run dev
