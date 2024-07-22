@@ -2,8 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+require('dotenv').config();
+
+
 const { Blog } = require('./db/index')
 const PORT = 4000;
+const HOST = '0.0.0.0';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -119,6 +123,6 @@ app.post("/post/react", async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
