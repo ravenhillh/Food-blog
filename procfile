@@ -1,3 +1,2 @@
-web: nodemon server/index.js
-cd: cd client/blog
-build: npm run dev
+web: cd server && npm start
+worker: cd client/blog && npm run dev
