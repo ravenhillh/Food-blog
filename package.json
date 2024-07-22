@@ -2,6 +2,7 @@
   "name": "foodblog-app",
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "npm install --prefix server && npm install --prefix client/blog"
+    "postinstall": "npm install --prefix server && npm install --prefix client/blog",
+     "heroku-postbuild": "npm run build"
   }
 }
