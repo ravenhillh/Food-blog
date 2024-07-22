@@ -1,2 +1,2 @@
-web: cd server && npm start
-worker: cd client/blog && npm run dev
+web: npm start --prefix server
+worker: npm run dev --prefix client/blog
