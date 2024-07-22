@@ -1,3 +1,3 @@
 web: cd server && npm start
 //start the frontend vite server
-release: cd client/blog && npm run build
+release: cd client/blog && npm run dev
