@@ -149,9 +149,9 @@ app.post("/post/react", async (req, res) => {
 //       });
 //   }
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/blog/dist/index.html'));
   });
-  
+
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
