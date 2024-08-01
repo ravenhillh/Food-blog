@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
+
 const app = express();
 
 require('dotenv').config();
@@ -12,6 +14,7 @@ const PORT = 4000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+// app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 // let posts = [
 //     {
