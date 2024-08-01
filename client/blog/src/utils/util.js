@@ -1,5 +1,5 @@
 export const fetchAllPosts = (setLoading, setPosts) => {
-  fetch("http://localhost:4000/posts")
+  fetch("/posts")
       .then((res) => res.json())
       .then((data) => {
           setLoading(false);
