@@ -9,7 +9,7 @@ export const fetchAllPosts = (setLoading, setPosts) => {
 };
 
 export const fetchPostContent = (slug, setLoading, setPost) => {
-  fetch("http://localhost:4000/post/details", {
+  fetch("/post/details", {
       method: "POST",
       body: JSON.stringify({ slug: slug }),
       headers: {
@@ -27,7 +27,7 @@ export const fetchPostContent = (slug, setLoading, setPost) => {
 };
 
 export const postReaction = (slug, type) => {
-    fetch("http://localhost:4000/post/react", {
+    fetch("/post/react", {
         method: "POST",
         body: JSON.stringify({ slug, type, u_id: localStorage.getItem("u_id") }),
         headers: {
@@ -41,7 +41,7 @@ export const postReaction = (slug, type) => {
 };
 
 export const addNewPost = (u_id, title, content, date, navigate) => {
-    fetch("http://localhost:4000/post/add", {
+    fetch("/post/add", {
         method: "POST",
         body: JSON.stringify({ u_id, title, content, date }),
         headers: {
