@@ -7,25 +7,25 @@ require('dotenv').config();
 
 const { Blog } = require('./db/index')
 const PORT = 4000;
-const HOST = '0.0.0.0';
+// const HOST = '0.0.0.0';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-let posts = [
-    {
-        u_id: "a123",
-        post_id: "1",
-        title: "How to Make a Great Chili",
-        slug: "cooking-a-delicious-chili",
-        content:
-            "The trick to a great chili is putting in all the delicious ingredients you like. This one is based off of my grandma's chili, so it has a very 50's America feel. I like to use ground beef, peppers, onions, lots of tomatoes and black beans. If you wanted you could add in a variety of different meats, vegetables and spices to suit your preferences.",
-        published_date: "27-07-2023",
-        likes: [{ user_id: "12345" }, { u_id: "ancsd" }],
-        dislikes: [{ user_id: "12345" }, { u_id: "12345" }],
-    },
-];
+// let posts = [
+//     {
+//         u_id: "a123",
+//         post_id: "1",
+//         title: "How to Make a Great Chili",
+//         slug: "cooking-a-delicious-chili",
+//         content:
+//             "The trick to a great chili is putting in all the delicious ingredients you like. This one is based off of my grandma's chili, so it has a very 50's America feel. I like to use ground beef, peppers, onions, lots of tomatoes and black beans. If you wanted you could add in a variety of different meats, vegetables and spices to suit your preferences.",
+//         published_date: "27-07-2023",
+//         likes: [{ user_id: "12345" }, { u_id: "ancsd" }],
+//         dislikes: [{ user_id: "12345" }, { u_id: "12345" }],
+//     },
+// ];
 
 //👇🏻 creates post slug
 const createSlug = (text, id) => {
@@ -45,9 +45,11 @@ app.get("/posts", (req, res) => {
     .then((posts) => {
         res.json({posts})
     })
-    // res.json({
-    //     posts,
-    // });
+    .catch((err) => {
+        console.log(err)
+        res.sendStatus(404)
+    })
+  
 });
 
 app.post("/post/add", (req, res) => {
@@ -95,32 +97,46 @@ app.post("/post/details", (req, res) => {
 app.post("/post/react", async (req, res) => {
     const { slug, type, u_id } = req.body;
 
-    //👇🏻 like post functionality
-    for (let i = 0; i < posts.length; i++) {
-        if (posts[i].slug === slug && type === "like") {
-            //👇🏻 validates the post reaction
-            const validateLike = posts[i].likes.filter(
-                (likes) => likes.u_id === u_id
-            );
-            if (validateLike.length === 0) {
-                posts[i].likes.push({ u_id });
-                res.json({ message: "You've just liked a post" });
-            }
-        }
-
-        //👇🏻 dislike post functionality
-        if (posts[i].slug === slug && type === "dislike") {
-            //👇🏻 validates the post reaction
-            const validateDislike = posts[i].dislikes.filter(
-                (dislikes) => dislikes.u_id === u_id
-            );
-            if (validateDislike.length === 0) {
-                posts[i].dislikes.push({ u_id });
-                // const sendNotifcation = await notify("liked", u_id);
-                res.json({ message: "You've just disliked a post" });
-            }
-        }
+    if (type === 'like') {
+         Blog.findOneAndUpdate({ slug }, {
+        "$push": { likes: { u_id } }
+    }).then(() => {
+        res.json({ message: "You've just liked a post" });
+    }).catch(err => console.log(err))
+    } else {
+        Blog.findOneAndUpdate({ slug }, {
+            "$push": { dislikes: { u_id } }
+        }).then(() => {
+            res.json({ message: "You've just disliked a post" });
+        }).catch(err => console.log(err))
     }
+   
+    //👇🏻 like post functionality
+    // for (let i = 0; i < posts.length; i++) {
+    //     if (posts[i].slug === slug && type === "like") {
+    //         //👇🏻 validates the post reaction
+    //         const validateLike = posts[i].likes.filter(
+    //             (likes) => likes.u_id === u_id
+    //         );
+    //         if (validateLike.length === 0) {
+    //             posts[i].likes.push({ u_id });
+    //             res.json({ message: "You've just liked a post" });
+    //         }
+    //     }
+
+    //     //👇🏻 dislike post functionality
+    //     if (posts[i].slug === slug && type === "dislike") {
+    //         //👇🏻 validates the post reaction
+    //         const validateDislike = posts[i].dislikes.filter(
+    //             (dislikes) => dislikes.u_id === u_id
+    //         );
+    //         if (validateDislike.length === 0) {
+    //             posts[i].dislikes.push({ u_id });
+    //             // const sendNotifcation = await notify("liked", u_id);
+    //             res.json({ message: "You've just disliked a post" });
+    //         }
+    //     }
+    // }
 });
 
 app.listen(process.env.PORT || PORT, () => {
