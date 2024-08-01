@@ -155,6 +155,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/blog/dist/index.html'));
   });
 
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || PORT, '0.0.0.0', () => {
     console.log(`Server listening on ${PORT}`);
 });
