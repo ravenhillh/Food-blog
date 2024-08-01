@@ -14,7 +14,7 @@ const PORT = 4000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-// app.use(express.static(path.resolve(__dirname, '../client/blog/dist')));
+app.use(express.static(path.resolve(__dirname, '../client/blog/dist')));
 
 // let posts = [
 //     {
@@ -152,7 +152,7 @@ app.post("/post/react", async (req, res) => {
 //       });
 //   }
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/blog/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/blog/dist/index.html'));
   });
 
 app.listen(process.env.PORT || PORT, () => {
