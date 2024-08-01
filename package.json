@@ -3,5 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "postinstall": "npm install --prefix server && npm install --prefix client/blog && npm run build --prefix client/blog"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }
