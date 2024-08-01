@@ -26,6 +26,7 @@ const Home = () => {
                 <Link to='/' className='logo'>
                     <h2>Jon Hill Recipes</h2>
                 </Link>
+                <Link to='/bio' className="bio">Bio</Link>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     {loggedIn ? (
                         <Link to='/post/new' className='newPostBtn'>
