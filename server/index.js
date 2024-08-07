@@ -69,15 +69,12 @@ app.post("/post/add", (req, res) => {
     };
     Blog.create(postObject)
     .then(() => {
-        // res.sendStatus(200)
     res.json({ message: "Post added successfully!✅" });
     })
     .catch((err) => {
         console.log(err)
         res.sendStatus(404)
     })
-    // posts.unshift(postObject);
-    // res.json({ message: "Post added successfully!✅" });
 });
 
 app.post("/post/details", (req, res) => {
@@ -92,9 +89,6 @@ app.post("/post/details", (req, res) => {
         console.log(err)
         res.sendStatus(404)
     });
-
-    // const result = posts.filter((post) => post.slug === slug);
-    // res.json({ post: result[0] });
 });
 
 app.post("/post/react", async (req, res) => {
@@ -113,44 +107,8 @@ app.post("/post/react", async (req, res) => {
             res.json({ message: "You've just disliked a post" });
         }).catch(err => console.log(err))
     }
-   
-    //👇🏻 like post functionality
-    // for (let i = 0; i < posts.length; i++) {
-    //     if (posts[i].slug === slug && type === "like") {
-    //         //👇🏻 validates the post reaction
-    //         const validateLike = posts[i].likes.filter(
-    //             (likes) => likes.u_id === u_id
-    //         );
-    //         if (validateLike.length === 0) {
-    //             posts[i].likes.push({ u_id });
-    //             res.json({ message: "You've just liked a post" });
-    //         }
-    //     }
-
-    //     //👇🏻 dislike post functionality
-    //     if (posts[i].slug === slug && type === "dislike") {
-    //         //👇🏻 validates the post reaction
-    //         const validateDislike = posts[i].dislikes.filter(
-    //             (dislikes) => dislikes.u_id === u_id
-    //         );
-    //         if (validateDislike.length === 0) {
-    //             posts[i].dislikes.push({ u_id });
-    //             // const sendNotifcation = await notify("liked", u_id);
-    //             res.json({ message: "You've just disliked a post" });
-    //         }
-    //     }
-    // }
 });
 
-// if (process.env.NODE_ENV === "production") {
-//     // app.use(express.static("build"));
-//     // app.get("*", (req, res) => {
-//     //   res.sendFile(path.resolve(__dirname,  "build", "index.html"));
-//     // });
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.join(__dirname, '../client/blog/dist/index.html'));
-//       });
-//   }
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/blog/dist/index.html'));
   });
