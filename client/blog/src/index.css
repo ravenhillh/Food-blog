@@ -161,6 +161,14 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.bio-pic-container {
+	display: flex;
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
+}
+
 @media screen and (max-width: 768px) {
 	.details_body {
 		width: 100%;
