@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 const hankoApi = "https://b1ab3632-446a-4d30-a451-58761db04408.hanko.io";

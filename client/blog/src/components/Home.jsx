@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
 
@@ -18,7 +18,7 @@ const Home = () => {
         fetchPosts();
     }, [fetchPosts]);
 
-    // if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Loading...</p>;
 
     return (
         <div>

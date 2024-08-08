@@ -35,13 +35,13 @@ const NewPost = () => {
     [hanko, redirectAfterLogout]
   );
 
-  //👇🏻 formates the date to a readable string
+  //👇🏻 format the date to a readable string
   const formatDate = () => {
     const date = new Date();
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${month}-${day}-${year}`;
   };
 
   //👇🏻 executes on form submit

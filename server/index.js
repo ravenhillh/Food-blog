@@ -16,20 +16,6 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '../client/blog/dist')));
 
-// let posts = [
-//     {
-//         u_id: "a123",
-//         post_id: "1",
-//         title: "How to Make a Great Chili",
-//         slug: "cooking-a-delicious-chili",
-//         content:
-//             "The trick to a great chili is putting in all the delicious ingredients you like. This one is based off of my grandma's chili, so it has a very 50's America feel. I like to use ground beef, peppers, onions, lots of tomatoes and black beans. If you wanted you could add in a variety of different meats, vegetables and spices to suit your preferences.",
-//         published_date: "27-07-2023",
-//         likes: [{ user_id: "12345" }, { u_id: "ancsd" }],
-//         dislikes: [{ user_id: "12345" }, { u_id: "12345" }],
-//     },
-// ];
-
 //👇🏻 creates post slug
 const createSlug = (text, id) => {
     let slug = text
