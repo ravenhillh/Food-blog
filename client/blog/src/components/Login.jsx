@@ -7,10 +7,8 @@ const Login = () => {
     const navigate = useNavigate();
     const hanko = useMemo(() => new Hanko(hankoApi), []);
 
-    //👇🏻 generates random string as ID
 const generateUserID = () => Math.random().toString(36).substring(2, 10);
 
-//👇🏻 executes after a user logs in
 const redirectAfterLogin = useCallback(() => {
     localStorage.setItem("loggedIn", "true");
     if (!localStorage.getItem("u_id")) {
@@ -19,7 +17,6 @@ const redirectAfterLogin = useCallback(() => {
     navigate("/");
 }, [navigate]);
 
-//👇🏻 triggered after a successful sign in
 useEffect(
     () =>
         hanko.onAuthFlowCompleted(() => {
