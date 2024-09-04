@@ -1,12 +1,10 @@
 
 
 const Bio = () => {
-//   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div id="bio-container">
-        <br />
-        <h2 style={{ display: "flex", padding:'10px' }} className="bio-header">Meet the chef</h2>
+        <h2 style={{ display: "flex", padding:'10px' }} className="bio-header">Meet the chef...</h2>
         <div className="bio-details-container">
           <img
           src="https://scontent-hou1-1.xx.fbcdn.net/v/t31.18172-8/10633228_10152662266847086_5510959160989902783_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f798df&_nc_ohc=Mpm8KrykFqsQ7kNvgEhX3UP&_nc_ht=scontent-hou1-1.xx&oh=00_AYC8iPhdjNR52vFXfA5Zy4S6_rushRNrn_MJhV4LwQBLhQ&oe=66FE9C35"
@@ -18,7 +16,6 @@ const Bio = () => {
               the Delridge neighborhood since 1999. In my free time I love to cook, write, ride bikes, and spend time with my wife and four children.
           </p>
         </div>
-        <br />
     </div>
   )
 }
