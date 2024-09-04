@@ -162,13 +162,19 @@
 	justify-content: center;
 }
 
+.bio-container {
+	padding-bottom: 10px;
+}
+
 .bio-header {
-	font-size: 22px;
-	color:darkolivegreen
+	font-size: 30px;
+	font-weight: 300;
+	color:rgb(132, 169, 70)
 }
 
 .bio-details-container {
 	display: flex;
+	align-items: center;
 }
 
 @media screen and (max-width: 768px) {
