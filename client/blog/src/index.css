@@ -162,11 +162,13 @@
 	justify-content: center;
 }
 
-.bio-pic-container {
+.bio-header {
+	font-size: 22px;
+	color:darkolivegreen
+}
+
+.bio-details-container {
 	display: flex;
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
 }
 
 @media screen and (max-width: 768px) {
