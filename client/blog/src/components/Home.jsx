@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
 import Bio from './Bio'
+import Photos from './Photos'
 
 const Home = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -41,6 +42,7 @@ const Home = () => {
                 </div>
             </nav>
             <main className='main'>
+                < Photos/>
                 < Bio/>
                 <h2 className='heading'>Latest Posts</h2>
                 <div className='posts_container'>
