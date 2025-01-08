@@ -21,11 +21,10 @@ const Home = () => {
         fetchPosts();
     }, [fetchPosts]);
 
-    if (loading) return <p>Loading...</p>;
+    // if (loading) return <p>Loading...</p>;
 
     return (
         <div>
-            <div style={{ backgroundColor: 'black', height: '30px', width: '100%' }}></div>
             <div className="landing-wrapper">
                 <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className='navbar'>
                     <Link to='/' className='logo'>
