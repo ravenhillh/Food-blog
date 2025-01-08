@@ -61,7 +61,20 @@ const NewPost = () => {
 
   return (
     <div>
-      <nav className="navbar">
+      <nav
+        className="new-post-navbar"
+        style={{
+          width: "100%",
+          height: "10vh",
+          padding: "20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "left",
+          position: "sticky",
+          top: "0",
+          background: "black"
+        }}
+      >
         <Link to="/" className="logo">
           <h2>Jon Hill Recipes</h2>
         </Link>
