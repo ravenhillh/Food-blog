@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
-// import Bio from './Bio'
-// import Photos from './Photos'
+import Bio from './Bio'
+import Photos from './Photos'
 
 
 const Home = () => {
@@ -53,8 +53,8 @@ const Home = () => {
                 </div>
             </div>
             <main className='main'>
-                {/* < Photos/>
-                < Bio/> */}
+                < Bio/>
+                < Photos/>
                 <h2 className='heading'>Latest Posts</h2>
                 <div className='posts_container'>
                     {posts?.map((post) => (
