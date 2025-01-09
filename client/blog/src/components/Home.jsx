@@ -21,18 +21,20 @@ const Home = () => {
         fetchPosts();
     }, [fetchPosts]);
 
-    // if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Loading...</p>;
 
     return (
         <div>
             <div className="landing-wrapper">
                 <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className='navbar'>
                     <Link to='/' className='logo'>
-                        <h2>Jon Hill</h2>
+                        <h2 style={{ fontSize: '4em' }}>🍳</h2>
                     </Link>
                     <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-                        <Link to='/bio' className="logo"><h2>Bio</h2></Link>
+                        <Link to='/bio' className="logo"><h2>About</h2></Link>
                         <Link to='/photos' className="logo"><h2>Gallery</h2></Link>
+                        <Link to='/stories' className="logo"><h2>Stories</h2></Link>
+                        <Link to='/contact' className="logo"><h2>Contact</h2></Link>
                         <div style={{ display: "flex", alignItems: "center" }}>
                             {loggedIn ? (
                                 <Link to='/post/new' className='newPostBtn'>

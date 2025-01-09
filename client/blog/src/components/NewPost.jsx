@@ -72,11 +72,11 @@ const NewPost = () => {
           justifyContent: "left",
           position: "sticky",
           top: "0",
-          background: "black"
+          background: "black",
         }}
       >
         <Link to="/" className="logo">
-          <h2>Jon Hill Recipes</h2>
+          <h2 style={{ fontSize: "4em" }}>🍳</h2>
         </Link>
         <button className="newPostBtn logOut" onClick={logout}>
           Log out
