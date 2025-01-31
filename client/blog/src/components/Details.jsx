@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { AiTwotoneLike, AiTwotoneDislike, AiFillCaretLeft } from "react-icons/ai";
+import { AiTwotoneLike, AiTwotoneDislike } from "react-icons/ai";
 
 import { useParams, Link } from "react-router-dom";
 import { fetchPostContent } from "../utils/util";
@@ -28,7 +28,7 @@ const Details = () => {
       <div>
           <header className='details_header'>
                 <Link to='/' className='logo'>
-                    <AiFillCaretLeft />HOME
+                    <h2 style={{ fontSize: '4em' }}>🍳</h2>
                  </Link>
               <h1 className='details_heading'>{post.title}</h1>
               <div className='post_details'>
