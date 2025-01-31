@@ -27,10 +27,10 @@ const Details = () => {
     return (
       <div>
           <header className='details_header'>
-                <Link to='/' className='logo'>
+                <Link to='/' className='logo' style={{ paddingLeft: '20px' }}>
                     <h2 style={{ fontSize: '4em' }}>🍳</h2>
                  </Link>
-              <h1 className='details_heading'>{post.title}</h1>
+              <h1 className='details_heading' >{post.title}</h1>
               <div className='post_details'>
                   <div>
                       <p className='details_date'>Posted on {post.published_date}</p>
