@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
 import Bio from './Bio'
 import Photos from './Photos'
+import Contacts from "./Contacts";
 
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
                     <Link to='/' className='logo'>
                         <h2 style={{ fontSize: '4em' }}>🍳</h2>
                     </Link>
-                    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
                         <Link to='/bio' className="logo"><h2>About</h2></Link>
                         <Link to='/photos' className="logo"><h2>Gallery</h2></Link>
                         <Link to='/stories' className="logo"><h2>Stories</h2></Link>
@@ -56,7 +57,7 @@ const Home = () => {
             <main className='main'>
                 < Bio/>
                 < Photos/>
-                <h2 className='heading'>Latest Posts</h2>
+                <h2 className='title' style={{fontWeight: "300"}}>Latest Posts</h2>
                 <div className='posts_container'>
                     {posts?.map((post) => (
                         <Link to={`/post/${post.slug}`} className='post' key={post.post_id}>
@@ -64,6 +65,7 @@ const Home = () => {
                         </Link>
                     ))}
                 </div>
+                < Contacts />
             </main>
         </div>
     );

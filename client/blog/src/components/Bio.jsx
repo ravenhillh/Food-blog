@@ -4,8 +4,8 @@ const Bio = () => {
   return (
     <div id="bio-container" style={{paddingBottom: "5rem"}}>
       <h2
-        style={{ display: "flex", padding: "20px", paddingTop: "3rem" }}
-        className="bio-header"
+        style={{ display: "flex", padding: "10px", paddingTop: "3rem", fontWeight: "225" }}
+        className="title"
       >
         Meet the chef...
       </h2>

@@ -6,7 +6,7 @@ const Photos = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center", fontFamily: "Playfair Display, serif", fontWeight: "300", paddingTop: "2rem" }}>Gallery</h1>
+      <h1 style={{ textAlign: "center", fontWeight: "300", paddingTop: "1rem" }} className="title">Gallery</h1>
       <div
         className="image-board"
         style={{
