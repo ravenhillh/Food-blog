@@ -23,7 +23,7 @@ const Bio = () => {
           such notable Seattle restaurants as Cinque Terra, Cedarbrook Lodge and
           Harry&apos;s Fine Foods. I am a dedicated West Seattleite, living in
           the Delridge neighborhood since 1999. In my free time I love to cook,
-          write, ride bikes, and spend time with my wife and four children.
+          write, ride bikes, and spend time with my wife and four+ children.
         </p>
       </div>
     </div>
