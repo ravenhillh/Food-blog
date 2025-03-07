@@ -15,6 +15,11 @@ const Home = () => {
     fetchAllPosts(setLoading, setPosts);
   }, []);
 
+  const formatDate = (date) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+    return new Date(date).toLocaleDateString('en-US', options)
+  }
+
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
       setLoggedIn(true);
@@ -84,7 +89,7 @@ const Home = () => {
               left: "20px",
               zIndex: "1",
               color: "white",
-              fontSize: '50px'
+              fontSize: "50px",
             }}
           >
             THE PONDERING CHEF
@@ -105,14 +110,14 @@ const Home = () => {
           Latest Posts
         </h2>
         <div className="posts_container">
-          {
-          posts?.map((post) => (
-            <Link to={`/post/${post.slug}`} className="post" key={post.post_id}>
-              <h2 className="post_title">{post.title}</h2>
-              <p>{post.published_date}</p>
+          {posts?.map((post) => (
+            <div key={post.post_id}>
+              <Link to={`/post/${post.slug}`} className="post">
+                <h2 className="post_title">{post.title}</h2>
+              </Link>
+              <p>{formatDate(post.published_date)}</p>
               <p>{post.content}</p>
-            </Link>
-
+            </div>
           ))}
         </div>
         <Contacts />
