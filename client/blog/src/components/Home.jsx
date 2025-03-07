@@ -114,9 +114,10 @@ const Home = () => {
             <div key={post.post_id}>
               <Link to={`/post/${post.slug}`} className="post">
                 <h2 className="post_title">{post.title}</h2>
+                 <p style={{textDecoration: "none"}}>{formatDate(post.published_date)}</p>
+                 <p style={{textDecoration: "none"}}>{post.content}</p>
               </Link>
-              <p className="post">{formatDate(post.published_date)}</p>
-              <p className="post">{post.content}</p>
+             
             </div>
           ))}
         </div>
