@@ -16,9 +16,9 @@ const Home = () => {
   }, []);
 
   const formatDate = (date) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' }
-    return new Date(date).toLocaleDateString('en-US', options)
-  }
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString("en-US", options);
+  };
 
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
@@ -106,18 +106,20 @@ const Home = () => {
       <main className="main">
         {/* <Bio />
         <Photos /> */}
-        <h2 className="title" style={{ fontWeight: "300" }}>
-          Latest Posts
-        </h2>
+
         <div className="posts_container">
+          <h2 className="title" style={{ fontWeight: "300" }}>
+            Latest Posts
+          </h2>
           {posts?.map((post) => (
-            <div key={post.post_id}>
+            <div key={post.post_id} style={{display: "flex", flexDirection: "column"}}>
               <Link to={`/post/${post.slug}`} className="post">
                 <h2 className="post_title">{post.title}</h2>
-                 <p style={{textDecoration: "none"}}>{formatDate(post.published_date)}</p>
-                 <p style={{textDecoration: "none"}}>{post.content}</p>
+                <p style={{ textDecoration: "none", color: "black" }}>
+                  {formatDate(post.published_date)}
+                </p>
+                <p style={{ textDecoration: "none", color: "black" }}>{post.content}</p>
               </Link>
-             
             </div>
           ))}
         </div>
