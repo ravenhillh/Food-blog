@@ -45,14 +45,15 @@
   margin-bottom: 20px;
 }
 .posts_container {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: beige;
 }
 .post {
   height: 100px;
-  width: 100%;
+  width: 50vh;
   padding: 20px;
   margin: 10px 0;
   background-color: #f5f8f8;

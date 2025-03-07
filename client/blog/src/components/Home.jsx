@@ -115,8 +115,8 @@ const Home = () => {
               <Link to={`/post/${post.slug}`} className="post">
                 <h2 className="post_title">{post.title}</h2>
               </Link>
-              <p>{formatDate(post.published_date)}</p>
-              <p>{post.content}</p>
+              <p className="post">{formatDate(post.published_date)}</p>
+              <p className="post">{post.content}</p>
             </div>
           ))}
         </div>
