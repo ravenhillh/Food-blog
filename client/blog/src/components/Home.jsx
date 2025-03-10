@@ -112,13 +112,21 @@ const Home = () => {
             Latest Posts
           </h2>
           {posts?.map((post) => (
-            <div key={post.post_id} style={{display: "flex", flexDirection: "column"}}>
+            //fix styling so that the title, date and content are stacked below
+            //change the way content is display so that it adds in new line characters where cooking steps are written
+            //add in photo import and storage on s2 buckets
+            <div
+              key={post.post_id}
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
               <Link to={`/post/${post.slug}`} className="post">
                 <h2 className="post_title">{post.title}</h2>
                 <p style={{ textDecoration: "none", color: "black" }}>
                   {formatDate(post.published_date)}
                 </p>
-                <p style={{ textDecoration: "none", color: "black" }}>{post.content}</p>
+                <p style={{ textDecoration: "none", color: "black" }}>
+                  {post.content}
+                </p>
               </Link>
             </div>
           ))}
