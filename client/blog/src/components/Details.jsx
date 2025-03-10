@@ -55,7 +55,7 @@ const Details = () => {
                   </div>
               </div>
           </header>
-          <main className='details_body'>{formatRecipe(post.content)}</main>
+          <main className='details_body'>{(post.content)}</main>
       </div>
   );
 };
