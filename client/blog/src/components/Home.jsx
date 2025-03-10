@@ -20,6 +20,10 @@ const Home = () => {
     return new Date(date).toLocaleDateString("en-US", options);
   };
 
+  const formatRecipe = (recipe) => {
+    return recipe.replace(/(?<!\d)(\d+\.)/g, '\n$1');
+  }
+
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
       setLoggedIn(true);
@@ -125,7 +129,7 @@ const Home = () => {
                   {formatDate(post.published_date)}
                 </p>
                 <p style={{ textDecoration: "none", color: "black" }}>
-                  {post.content}
+                  {formatRecipe(post.content)}
                 </p>
               </Link>
             </div>
