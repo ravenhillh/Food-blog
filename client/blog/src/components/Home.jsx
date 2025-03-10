@@ -21,7 +21,7 @@ const Home = () => {
   };
 
   const formatRecipe = (recipe) => {
-    return recipe.replace(/(?<!\d)(\d+\.)/g, '\n$1');
+    return recipe.replace(/(\d+\.)/g, '\n$1');
   }
 
   useEffect(() => {
@@ -119,6 +119,7 @@ const Home = () => {
             //fix styling so that the title, date and content are stacked below
             //change the way content is display so that it adds in new line characters where cooking steps are written
             //add in photo import and storage on s2 buckets
+            //get a good photo of dad
             <div
               key={post.post_id}
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
