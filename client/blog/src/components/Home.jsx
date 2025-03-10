@@ -21,7 +21,12 @@ const Home = () => {
   };
 
   const formatRecipe = (recipe) => {
-    return recipe.replace(/(\d+\.)/g, '\n$1');
+    return recipe.split(/(\d+\.)/).map((part, index) => {
+      if (index % 2 === 1) {
+        return `\n${part}`;
+      }
+      return part;
+    }).join('').trim();
   }
 
   useEffect(() => {
