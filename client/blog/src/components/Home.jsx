@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, React } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
 // import Bio from "./Bio";
@@ -21,13 +21,17 @@ const Home = () => {
   };
 
   const formatRecipe = (recipe) => {
-    return recipe.split(/(\d+\.)/).map((part, index) => {
-      if (index % 2 === 1) {
-        return `\n${part}`;
-      }
-      return part;
-    }).join('').trim();
-  }
+    return recipe
+      .split(/(\d+\.)/)
+      .map((part, index) => {
+        if (index % 2 === 1) {
+          return `\n${part}`;
+        }
+        return part;
+      })
+      .join("")
+      .trim();
+  };
 
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
@@ -36,7 +40,7 @@ const Home = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-  if (loading) return <p>Loading...</p>;
+  //   if (loading) return <p>Loading...</p>;
 
   return (
     <div>
@@ -135,7 +139,12 @@ const Home = () => {
                   {formatDate(post.published_date)}
                 </p>
                 <p style={{ textDecoration: "none", color: "black" }}>
-                  {formatRecipe(post.content)}
+                  {post.content.split("\n").map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
                 </p>
               </Link>
             </div>
