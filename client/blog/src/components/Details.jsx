@@ -18,6 +18,15 @@ const Details = () => {
       postReaction(slug, type);
   };
 
+    const formatRecipe = (recipe) => {
+    return recipe.split(/(\d+\.)/).map((part, index) => {
+      if (index % 2 === 1) {
+        return `\n${part}`;
+      }
+      return part;
+    }).join('').trim();
+  }
+
     useEffect(() => {
         fetchPostDetails();
     }, [fetchPostDetails]);
@@ -53,7 +62,7 @@ const Details = () => {
                   </div>
               </div>
           </header>
-          <main className='details_body'>{post.content}</main>
+          <main className='details_body'>{formatRecipe(post.content)}</main>
       </div>
   );
 };
