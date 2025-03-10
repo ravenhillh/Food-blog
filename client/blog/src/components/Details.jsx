@@ -18,14 +18,7 @@ const Details = () => {
       postReaction(slug, type);
   };
 
-    const formatRecipe = (recipe) => {
-    return recipe.split(/(\d+\.)/).map((part, index) => {
-      if (index % 2 === 1) {
-        return `\n${part}`;
-      }
-      return part;
-    }).join('').trim();
-  }
+   
 
     useEffect(() => {
         fetchPostDetails();

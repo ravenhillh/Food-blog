@@ -22,6 +22,15 @@ const NewPost = () => {
     });
   };
 
+  const formatRecipe = (recipe) => {
+    return recipe.split(/(\d+\.)/).map((part, index) => {
+      if (index % 2 === 1) {
+        return `\n${part}`;
+      }
+      return part;
+    }).join('').trim();
+  }
+
   const redirectAfterLogout = useCallback(() => {
     navigate("/login");
   }, [navigate]);
@@ -51,7 +60,7 @@ const NewPost = () => {
     addNewPost(
       localStorage.getItem("u_id"),
       title,
-      content,
+      formatRecipe(content),
       formatDate(),
       navigate
     );
