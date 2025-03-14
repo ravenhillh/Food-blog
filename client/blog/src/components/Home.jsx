@@ -40,7 +40,7 @@ const Home = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-    if (loading) return <p>Loading...</p>;
+    // if (loading) return <p>Loading...</p>;
 
   return (
     <div>
@@ -66,12 +66,9 @@ const Home = () => {
             <Link to="/photos" className="logo">
               <h2>Gallery</h2>
             </Link>
-            <Link to="/stories" className="logo">
-              <h2>Stories</h2>
-            </Link>
-            <Link to="/contact" className="logo">
+            <button onClick={() => document.querySelector('.contact').scrollIntoView({ behavior: 'smooth' })} className="logo">
               <h2>Contact</h2>
-            </Link>
+            </button>
             <div style={{ display: "flex", alignItems: "center" }}>
               {loggedIn ? (
                 <Link to="/post/new" className="newPostBtn">

@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import Details from "./components/Details";
 import Login from "./components/Login";
 import NewPost from "./components/NewPost";
+import Bio from "./components/Bio";
+import Photos from "./components/Photos";
 
 const App = () => {
     return (
@@ -12,6 +14,8 @@ const App = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/post/:slug' element={<Details />} />
                 <Route path='/post/new' element={<NewPost />} />
+                <Route path='/bio' element={<Bio />} />
+                <Route path='/photos' element={<Photos />} />
             </Routes>
         </Router>
     );
