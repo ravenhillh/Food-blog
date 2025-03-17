@@ -43,7 +43,7 @@ const Home = () => {
   // if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ backgroundColor: "seashell" }}>
+    <div style={{ backgroundColor: "gainsboro" }}>
       <div className="landing">
         <nav
           style={{
@@ -83,7 +83,7 @@ const Home = () => {
           </div>
         </nav>
         <div
-          className="titleBox"
+          className="landing-box"
           style={{
             position: "relative",
             width: "100%",
@@ -101,8 +101,9 @@ const Home = () => {
               color: "white",
               fontSize: "50px",
             }}
+            className="landing-header"
           >
-            THE PONDERING CHEF
+            JON HILL CULINARY
           </h1>
           <div
             style={{
@@ -111,6 +112,7 @@ const Home = () => {
               overflow: "hidden",
               borderRadius: "25px",
             }}
+            className="landing-image"
           >
             <img
               src={Beach}

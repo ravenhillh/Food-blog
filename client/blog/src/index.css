@@ -236,10 +236,24 @@
     padding-bottom: 50px;
   }
   .nav-links {
-    font-size: 10px;
-    gap: .5rem;
+    font-size: 8px;
+    gap: .1rem;
     text-align: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 10px;
+  }
+  .landing-header {
+    display: flex;
+    padding-bottom: 60px;
+  }
+  .landing-image {
+    display: flex;
+  }
+  .landing-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    overflow: hidden;
   }
 }
