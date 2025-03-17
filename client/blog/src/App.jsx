@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import NewPost from "./components/NewPost";
 import Bio from "./components/Bio";
 import Photos from "./components/Photos";
+import Contacts from "./components/Contacts";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path='/post/new' element={<NewPost />} />
                 <Route path='/bio' element={<Bio />} />
                 <Route path='/photos' element={<Photos />} />
+                <Route path='/contact' element={<Contacts />} />
             </Routes>
         </Router>
     );

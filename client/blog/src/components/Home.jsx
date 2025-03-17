@@ -4,7 +4,7 @@ import { fetchAllPosts } from "../utils/util";
 // import Bio from "./Bio";
 // import Photos from "./Photos";
 import Contacts from "./Contacts";
-import Beach from "/assets/IMG_1281.jpeg";
+import Beach from "/assets/hawaii.jpeg";
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,18 +20,18 @@ const Home = () => {
     return new Date(date).toLocaleDateString("en-US", options);
   };
 
-//   const formatRecipe = (recipe) => {
-//     return recipe
-//       .split(/(\d+\.)/)
-//       .map((part, index) => {
-//         if (index % 2 === 1) {
-//           return `\n${part}`;
-//         }
-//         return part;
-//       })
-//       .join("")
-//       .trim();
-//   };
+  //   const formatRecipe = (recipe) => {
+  //     return recipe
+  //       .split(/(\d+\.)/)
+  //       .map((part, index) => {
+  //         if (index % 2 === 1) {
+  //           return `\n${part}`;
+  //         }
+  //         return part;
+  //       })
+  //       .join("")
+  //       .trim();
+  //   };
 
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
@@ -40,10 +40,10 @@ const Home = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-    // if (loading) return <p>Loading...</p>;
+  // if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div style={{ backgroundColor: "seashell" }}>
       <div className="landing">
         <nav
           style={{
@@ -66,9 +66,9 @@ const Home = () => {
             <Link to="/photos" className="logo">
               <h2>Gallery</h2>
             </Link>
-            <button onClick={() => document.querySelector('.contact').scrollIntoView({ behavior: 'smooth' })} className="logo">
-              <h2>Contact</h2>
-            </button>
+            <Link to="/contacts" className="logo">
+              <h2>Contacts</h2>
+            </Link>
             <div style={{ display: "flex", alignItems: "center" }}>
               {loggedIn ? (
                 <Link to="/post/new" className="newPostBtn">
@@ -88,8 +88,8 @@ const Home = () => {
             position: "relative",
             width: "100%",
             display: "flex",
-            justifyContent: "center",
             height: "40vh",
+            margin: "40px",
           }}
         >
           <h1
@@ -104,11 +104,18 @@ const Home = () => {
           >
             THE PONDERING CHEF
           </h1>
-          <div style={{ width: "100%", height: "auto", overflow: "hidden" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "auto",
+              overflow: "hidden",
+              borderRadius: "25px",
+            }}
+          >
             <img
               src={Beach}
               alt="title box image"
-              style={{ width: "100%", marginTop: "-25%" }}
+              style={{ width: "95%", borderRadius: "25px" }}
             />
           </div>
         </div>
