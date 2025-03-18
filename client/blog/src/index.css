@@ -54,7 +54,6 @@
 }
 .post {
   height: 100%;
-  width: 75vh;
   padding: 20px;
   margin: 10px 0;
   background-color: #f5f8f8;
@@ -266,7 +265,6 @@
   }
   .post {
     height: 100%;
-    
     padding: 20px;
     margin: 10px 0;
     background-color: #f5f8f8;
