@@ -17,21 +17,9 @@ const Home = () => {
 
   const formatDate = (date) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(date).toLocaleDateString("en-US", options);
+    const dateObj = new Date(date.replace(/-/g, '/'));
+    return dateObj.toLocaleDateString("en-US", options);
   };
-
-  //   const formatRecipe = (recipe) => {
-  //     return recipe
-  //       .split(/(\d+\.)/)
-  //       .map((part, index) => {
-  //         if (index % 2 === 1) {
-  //           return `\n${part}`;
-  //         }
-  //         return part;
-  //       })
-  //       .join("")
-  //       .trim();
-  //   };
 
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
@@ -43,7 +31,7 @@ const Home = () => {
   // if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ backgroundColor: "gainsboro" }}>
+    <div style={{ backgroundColor: "navajowhite" }}>
       <div className="landing">
         <nav
           style={{
@@ -99,11 +87,10 @@ const Home = () => {
               left: "20px",
               zIndex: "1",
               color: "white",
-              fontSize: "50px",
             }}
             className="landing-header"
           >
-            JON HILL CULINARY
+            JON HILL CULINARY BLOG
           </h1>
           <div
             style={{
