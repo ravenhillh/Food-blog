@@ -49,23 +49,23 @@ const Home = () => {
             className="nav-links"
           >
             <Link to="/bio" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>About</h2>
+              <h2 >About</h2>
             </Link>{" "}
             <Link to="/photos" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>Gallery</h2>
+              <h2 >Gallery</h2>
             </Link>
             <Link to="/contacts" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>Contacts</h2>
+              <h2 >Contacts</h2>
             </Link>
-            <Link to="/subscribe" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>Subscribe</h2>
+            {/* <Link to="/subscribe" style={{ textDecoration: "none", color: "black", }}>
+              <h2 >Subscribe</h2>
             </Link>
             <Link to="/recipe" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>Recipe Index</h2>
+              <h2 >Recipe Index</h2>
             </Link>
             <Link to="/archives" style={{ textDecoration: "none", color: "black", }}>
-              <h2 style={{fontFamily: "fantasy"}}>Archives</h2>
-            </Link>
+              <h2 >Archives</h2>
+            </Link> */}
             <div style={{ display: "flex", alignItems: "center" }}>
               {loggedIn ? (
                 <Link to="/post/new" className="newPostBtn">
@@ -96,7 +96,6 @@ const Home = () => {
               left: "20px",
               zIndex: "1",
               color: "black",
-              fontFamily: "fantasy",
               fontSize: "3rem",
             }}
             className="landing-header"
@@ -127,7 +126,7 @@ const Home = () => {
         <div className="posts_container">
           <h2
             className="title"
-            style={{ fontWeight: "300", fontFamily: "fantasy" }}
+            style={{ fontWeight: "300"}}
           >
             Latest Posts
           </h2>
