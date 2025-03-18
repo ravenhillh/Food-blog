@@ -54,7 +54,7 @@ const Home = () => {
           className="navbar"
         >
           <Link to="/" className="logo">
-            <h2 style={{ fontSize: "4em" }}>🌿</h2>
+            <h2 style={{ fontSize: "3em" }}>🌿</h2>
           </Link>
           <div
             style={{ display: "flex", gap: "2rem", alignItems: "center" }}
@@ -131,8 +131,6 @@ const Home = () => {
             Latest Posts
           </h2>
           {posts?.map((post) => (
-            //fix styling so that the title, date and content are stacked below
-            //change the way content is display so that it adds in new line characters where cooking steps are written
             //add in photo import and storage on s2 buckets
             //get a good photo of dad
             <div
