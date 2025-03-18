@@ -17,7 +17,7 @@ const Home = () => {
 
   const formatDate = (date) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
-    const dateObj = new Date(date.replace(/-/g, '/'));
+    const dateObj = new Date(date.replace(/-/g, "/"));
     return dateObj.toLocaleDateString("en-US", options);
   };
 
@@ -45,17 +45,26 @@ const Home = () => {
             <h2 style={{ fontSize: "3em" }}>🌿</h2>
           </Link>
           <div
-            style={{ display: "flex", gap: "2rem", alignItems: "center" }}
+            style={{ display: "flex", gap: "2rem", alignItems: "center", }}
             className="nav-links"
           >
-            <Link to="/bio" className="logo">
-              <h2>About</h2>
+            <Link to="/bio" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>About</h2>
+            </Link>{" "}
+            <Link to="/photos" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>Gallery</h2>
             </Link>
-            <Link to="/photos" className="logo">
-              <h2>Gallery</h2>
+            <Link to="/contacts" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>Contacts</h2>
             </Link>
-            <Link to="/contacts" className="logo">
-              <h2>Contacts</h2>
+            <Link to="/subscribe" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>Subscribe</h2>
+            </Link>
+            <Link to="/recipe" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>Recipe Index</h2>
+            </Link>
+            <Link to="/archives" style={{ textDecoration: "none", color: "black", }}>
+              <h2 style={{fontFamily: "fantasy"}}>Archives</h2>
             </Link>
             <div style={{ display: "flex", alignItems: "center" }}>
               {loggedIn ? (
@@ -83,10 +92,12 @@ const Home = () => {
           <h1
             style={{
               position: "absolute",
-              bottom: "20px",
+              top: "20px",
               left: "20px",
               zIndex: "1",
-              color: "white",
+              color: "black",
+              fontFamily: "fantasy",
+              fontSize: "3rem",
             }}
             className="landing-header"
           >
@@ -114,7 +125,10 @@ const Home = () => {
         <Photos /> */}
 
         <div className="posts_container">
-          <h2 className="title" style={{ fontWeight: "300" }}>
+          <h2
+            className="title"
+            style={{ fontWeight: "300", fontFamily: "fantasy" }}
+          >
             Latest Posts
           </h2>
           {posts?.map((post) => (
