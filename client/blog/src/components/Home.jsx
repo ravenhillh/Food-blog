@@ -54,20 +54,26 @@ const Home = () => {
             style={{ display: "flex", gap: "2rem", alignItems: "center" }}
             className="nav-links"
           >
-            <Link to="/bio" style={{ textDecoration: "none", color: "black"}}>
-              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100"}}>About</h2>
+            <Link to="/bio" style={{ textDecoration: "none", color: "black" }}>
+              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100" }}>
+                About
+              </h2>
             </Link>{" "}
             <Link
               to="/photos"
               style={{ textDecoration: "none", color: "black" }}
             >
-              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100"}}>Gallery</h2>
+              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100" }}>
+                Gallery
+              </h2>
             </Link>
             <Link
               to="/contacts"
               style={{ textDecoration: "none", color: "black" }}
             >
-              <h2 style={{fontFamily: "Winky Sans", fontWeight: "100"}}>Contacts</h2>
+              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100" }}>
+                Contacts
+              </h2>
             </Link>
             {/* <Link to="/subscribe" style={{ textDecoration: "none", color: "black", }}>
               <h2 >Subscribe</h2>
@@ -107,36 +113,48 @@ const Home = () => {
               zIndex: 1000,
               background: "white",
               borderRadius: "5px",
-              fontFamily: "Winky Sans"
+              fontFamily: "Winky Sans",
             }}
           >
             <li>
-              <a href="bio" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+              <a
+                href="bio"
+                onClick={toggleMenu}
+                style={{ fontFamily: "Winky Sans", fontWeight: "100" }}
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="photos" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+              <a
+                href="photos"
+                onClick={toggleMenu}
+                style={{ fontFamily: "Winky Sans", fontWeight: "100" }}
+              >
                 Photos
               </a>
             </li>
             <li>
-              <a href="contact" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+              <a
+                href="contact"
+                onClick={toggleMenu}
+                style={{ fontFamily: "Winky Sans", fontWeight: "100" }}
+              >
                 Contact
               </a>
             </li>
             <li>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              {loggedIn ? (
-                <Link to="/post/new" className="newPostBtn">
-                  New Post
-                </Link>
-              ) : (
-                <Link to="/login" className="newPostBtn">
-                  Log in
-                </Link>
-              )}
-            </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {loggedIn ? (
+                  <Link to="/post/new" className="newPostBtn">
+                    New Post
+                  </Link>
+                ) : (
+                  <Link to="/login" className="newPostBtn">
+                    Log in
+                  </Link>
+                )}
+              </div>
             </li>
           </div>{" "}
         </div>
@@ -149,24 +167,16 @@ const Home = () => {
           width: "100%",
           display: "flex",
           height: "40vh",
-          margin: "40px",
+          marginLeft: "20px",
+          marginBottom: "20px",
         }}
       >
-        <h1
-          style={{
-            position: "absolute",
-            top: "20px",
-            left: "20px",
-            zIndex: "1",
-            color: "black",
-            fontSize: "3rem",
-            fontFamily: "Winky Sans",
-            fontWeight: "100"
-          }}
-          className="landing-header"
-        >
-          JON HILL CULINARY BLOG
-        </h1>
+        <h2 className="landing-header">
+          JON <br />
+          HILL <br />
+          CULINARY <br />
+          BLOG
+        </h2>
         <div
           style={{
             width: "100%",
@@ -188,7 +198,10 @@ const Home = () => {
         <Photos /> */}
 
         <div className="posts_container">
-          <h2 className="title" style={{ fontWeight: "200", fontFamily: "Winky Sans" }}>
+          <h2
+            className="title"
+            style={{ fontWeight: "200", fontFamily: "Winky Sans" }}
+          >
             Latest Posts
           </h2>
           {posts?.map((post) => (
