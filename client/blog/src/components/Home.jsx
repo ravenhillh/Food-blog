@@ -20,6 +20,12 @@ const Home = () => {
     const dateObj = new Date(date.replace(/-/g, "/"));
     return dateObj.toLocaleDateString("en-US", options);
   };
+  const toggleMenu = () => {
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
+  };
 
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
@@ -31,8 +37,8 @@ const Home = () => {
   // if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ backgroundColor: "navajowhite" }}>
-      <div className="landing">
+    <div style={{ backgroundColor: "white" }}>
+      <div className="navbar-regular">
         <nav
           style={{
             display: "flex",
@@ -45,17 +51,23 @@ const Home = () => {
             <h2 style={{ fontSize: "3em" }}>🌿</h2>
           </Link>
           <div
-            style={{ display: "flex", gap: "2rem", alignItems: "center", }}
+            style={{ display: "flex", gap: "2rem", alignItems: "center" }}
             className="nav-links"
           >
-            <Link to="/bio" style={{ textDecoration: "none", color: "black", }}>
-              <h2 >About</h2>
+            <Link to="/bio" style={{ textDecoration: "none", color: "black"}}>
+              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100"}}>About</h2>
             </Link>{" "}
-            <Link to="/photos" style={{ textDecoration: "none", color: "black", }}>
-              <h2 >Gallery</h2>
+            <Link
+              to="/photos"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100"}}>Gallery</h2>
             </Link>
-            <Link to="/contacts" style={{ textDecoration: "none", color: "black", }}>
-              <h2 >Contacts</h2>
+            <Link
+              to="/contacts"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <h2 style={{fontFamily: "Winky Sans", fontWeight: "100"}}>Contacts</h2>
             </Link>
             {/* <Link to="/subscribe" style={{ textDecoration: "none", color: "black", }}>
               <h2 >Subscribe</h2>
@@ -79,44 +91,96 @@ const Home = () => {
             </div>
           </div>
         </nav>
-        <div
-          className="landing-box"
-          style={{
-            position: "relative",
-            width: "100%",
-            display: "flex",
-            height: "40vh",
-            margin: "40px",
-          }}
-        >
-          <h1
+      </div>
+      <nav className="hamburger-nav">
+        <h2 style={{ fontSize: "35px" }}>🌿</h2>
+        <div className="hamburger-menu">
+          <div className="hamburger-icon" onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div
+            className="menu-links"
             style={{
               position: "absolute",
-              top: "20px",
-              left: "20px",
-              zIndex: "1",
-              color: "black",
-              fontSize: "3rem",
+              zIndex: 1000,
+              background: "white",
+              borderRadius: "5px",
+              fontFamily: "Winky Sans"
             }}
-            className="landing-header"
           >
-            JON HILL CULINARY BLOG
-          </h1>
-          <div
-            style={{
-              width: "100%",
-              height: "auto",
-              overflow: "hidden",
-              borderRadius: "25px",
-            }}
-            className="landing-image"
-          >
-            <img
-              src={Beach}
-              alt="title box image"
-              style={{ width: "95%", borderRadius: "25px" }}
-            />
-          </div>
+            <li>
+              <a href="bio" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+                About
+              </a>
+            </li>
+            <li>
+              <a href="photos" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+                Photos
+              </a>
+            </li>
+            <li>
+              <a href="contact" onClick={toggleMenu} style={{fontFamily: "Winky Sans", fontWeight: "100"}}>
+                Contact
+              </a>
+            </li>
+            <li>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {loggedIn ? (
+                <Link to="/post/new" className="newPostBtn">
+                  New Post
+                </Link>
+              ) : (
+                <Link to="/login" className="newPostBtn">
+                  Log in
+                </Link>
+              )}
+            </div>
+            </li>
+          </div>{" "}
+        </div>
+      </nav>
+
+      <div
+        className="landing-box"
+        style={{
+          position: "relative",
+          width: "100%",
+          display: "flex",
+          height: "40vh",
+          margin: "40px",
+        }}
+      >
+        <h1
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            zIndex: "1",
+            color: "black",
+            fontSize: "3rem",
+            fontFamily: "Winky Sans",
+            fontWeight: "100"
+          }}
+          className="landing-header"
+        >
+          JON HILL CULINARY BLOG
+        </h1>
+        <div
+          style={{
+            width: "100%",
+            height: "auto",
+            overflow: "hidden",
+            borderRadius: "25px",
+          }}
+          className="landing-image"
+        >
+          <img
+            src={Beach}
+            alt="title box image"
+            style={{ width: "95%", borderRadius: "25px" }}
+          />
         </div>
       </div>
       <main className="main">
@@ -124,10 +188,7 @@ const Home = () => {
         <Photos /> */}
 
         <div className="posts_container">
-          <h2
-            className="title"
-            style={{ fontWeight: "300"}}
-          >
+          <h2 className="title" style={{ fontWeight: "200", fontFamily: "Winky Sans" }}>
             Latest Posts
           </h2>
           {posts?.map((post) => (
