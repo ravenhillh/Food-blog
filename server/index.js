@@ -2,20 +2,22 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-const AWS = require("aws-sdk");
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 const fs = require("fs");
 
 const app = express();
 
-const s3Client = new AWS.S3({
-  accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
-  secretAccessKey: "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",
+const s3Client = new S3Client({
   region: "us-east-2",
+  credentials: {
+    accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
+    secretAccessKey: "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",
+  },
 });
 
 require("dotenv").config();
 
-const storage = multer.memoryStorage()
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const { Blog } = require("./db/index");
@@ -71,21 +73,21 @@ app.post("/post/add", upload.single("file"), async (req, res) => {
     return s3Client.send(new PutObjectCommand(uploadParams));
   }
   const response = await uploadFile(file.buffer, title, file.mimetype);
-//   const fileContent = fs.readFileSync(req.file.path);
-//   const fileExtension = req.file.originalname.split(".").pop();
-//   const s3FileName = `${Date.now()}-${req.file.originalname}`;
+  //   const fileContent = fs.readFileSync(req.file.path);
+  //   const fileExtension = req.file.originalname.split(".").pop();
+  //   const s3FileName = `${Date.now()}-${req.file.originalname}`;
 
-//   const params = {
-//     Bucket: "bucket-food-blog-jh",
-//     Key: s3FileName,
-//     Body: fileContent,
-//     ContentType: req.file.mimetype,
-//     ACL: "public-read", // Allows public access to the file
-//   };
-//   const s3UploadResponse = await s3.upload(params).promise();
+  //   const params = {
+  //     Bucket: "bucket-food-blog-jh",
+  //     Key: s3FileName,
+  //     Body: fileContent,
+  //     ContentType: req.file.mimetype,
+  //     ACL: "public-read", // Allows public access to the file
+  //   };
+  //   const s3UploadResponse = await s3.upload(params).promise();
 
   // Remove file from local storage after upload
-//   fs.unlinkSync(req.file.path);
+  //   fs.unlinkSync(req.file.path);
 
   const postObject = {
     u_id,
