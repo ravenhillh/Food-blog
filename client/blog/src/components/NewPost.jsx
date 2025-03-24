@@ -8,7 +8,10 @@ const NewPost = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  // add an image string state variable to send in post request
   const hanko = useMemo(() => new Hanko(hankoApi), []);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
@@ -22,14 +25,26 @@ const NewPost = () => {
     });
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]; // Get the first file
+    if (file) {
+      setSelectedFile(file);
+      setPreview(URL.createObjectURL(file)); // Generate a preview URL
+    }
+  };
+
   const formatRecipe = (recipe) => {
-    return recipe.split(/(\d+\.)/).map((part, index) => {
-      if (index % 2 === 1) {
-        return `\n${part}`;
-      }
-      return part;
-    }).join('').trim();
-  }
+    return recipe
+      .split(/(\d+\.)/)
+      .map((part, index) => {
+        if (index % 2 === 1) {
+          return `\n${part}`;
+        }
+        return part;
+      })
+      .join("")
+      .trim();
+  };
 
   const redirectAfterLogout = useCallback(() => {
     navigate("/login");
@@ -62,10 +77,14 @@ const NewPost = () => {
       title,
       formatRecipe(content),
       formatDate(),
+      selectedFile,
       navigate
     );
     setContent("");
     setTitle("");
+    setSelectedFile(null);
+    setPreview(null);
+    e.target.reset();
   };
 
   return (
@@ -116,6 +135,17 @@ const NewPost = () => {
             required
             onChange={(e) => setContent(e.target.value)}
           />
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+          {preview && (
+            <div>
+              <h3>Preview:</h3>
+              <img
+                src={preview}
+                alt="Preview"
+                style={{ width: "200px", marginTop: "10px" }}
+              />
+            </div>
+          )}
           <button className="newPostBtn submitBtn" type="submit">
             Create Post
           </button>

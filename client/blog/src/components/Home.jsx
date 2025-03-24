@@ -47,8 +47,9 @@ const Home = () => {
           }}
           className="navbar"
         >
-          <Link to="/" className="logo">
+          <Link to="/" className="logo" style={{display:"flex", gap: "2rem", alignItems: "center"}}>
             <h2 style={{ fontSize: "3em" }}>🌿</h2>
+          <h2 style={{fontFamily: "Winky Sans", fontSize: "30px", fontWeight: "200"}}>Recipes & Stories</h2>
           </Link>
           <div
             style={{ display: "flex", gap: "2rem", alignItems: "center" }}
@@ -99,7 +100,10 @@ const Home = () => {
         </nav>
       </div>
       <nav className="hamburger-nav">
-        <h2 style={{ fontSize: "35px" }}>🌿</h2>
+      <div style={{display:"flex", gap: "1rem", alignItems: "center"}}>
+            <h2 style={{ fontSize: "3em" }}>🌿</h2>
+          <h2 style={{fontFamily: "Winky Sans", fontSize: "20px", fontWeight: "200"}}>Recipes & Stories</h2>
+          </div>
         <div className="hamburger-menu">
           <div className="hamburger-icon" onClick={toggleMenu}>
             <span></span>
