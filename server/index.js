@@ -4,15 +4,16 @@ const path = require("path");
 const multer = require("multer");
 const S3 = require("aws-sdk");
 const fs = require("fs");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
 const s3Client = new S3.S3({
-  region: "us-east-2",
-  accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
-  secretAccessKey: "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",
+  region: process.env.REGION,
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEY,
 });
-require("dotenv").config();
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -53,15 +54,10 @@ app.get("/posts", (req, res) => {
 app.post("/post/add", upload.single("file"), async (req, res) => {
   const { u_id, title, content, date } = req.body;
   const file = req.file;
-  //   if (!title || !content) {
-  //     return res
-  //       .status(400)
-  //       .json({ error: "Missing required fields, add a picture" });
-  //   }
-
+ 
   function uploadFile(fileBuffer, fileName, mimetype) {
     const uploadParams = {
-      Bucket: "bucket-food-blog-jh",
+      Bucket: process.env.BUCKETNAME,
       Body: fileBuffer,
       Key: fileName,
       ContentType: mimetype,
@@ -70,21 +66,6 @@ app.post("/post/add", upload.single("file"), async (req, res) => {
     return s3Client.upload((uploadParams)).promise();
   }
   const response = await uploadFile(file.buffer, title, file.mimetype);
-  //   const fileContent = fs.readFileSync(req.file.path);
-  //   const fileExtension = req.file.originalname.split(".").pop();
-  //   const s3FileName = `${Date.now()}-${req.file.originalname}`;
-
-  //   const params = {
-  //     Bucket: "bucket-food-blog-jh",
-  //     Key: s3FileName,
-  //     Body: fileContent,
-  //     ContentType: req.file.mimetype,
-  //     ACL: "public-read", // Allows public access to the file
-  //   };
-  //   const s3UploadResponse = await s3.upload(params).promise();
-
-  // Remove file from local storage after upload
-  //   fs.unlinkSync(req.file.path);
 
   const postObject = {
     u_id,
@@ -96,8 +77,6 @@ app.post("/post/add", upload.single("file"), async (req, res) => {
     likes: [],
     dislikes: [],
     fileUrl: response.Location, // S3 URL
-    // fileType: req.file.mimetype,
-    // fileSize: req.file.size,
   };
   Blog.create(postObject)
     .then(() => {

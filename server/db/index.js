@@ -1,13 +1,10 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config({ path: '../.env' });
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-
-require('dotenv').config();
-
-const { ATLAS_URI } = process.env;
-
+const atlas_uri = process.env.ATLAS_URI;
 mongoose
-  .connect('mongodb+srv://ravenhillh:QZvJt8CIOTwXMn6f@cluster0.mewfsw8.mongodb.net/?retryWrites=true&w=majority')
+  .connect(atlas_uri)
   .then(() => console.log('db connected successfully'))
   .catch((err) => console.log(err))
 
@@ -21,8 +18,6 @@ const BlogSchema = new mongoose.Schema({
   likes: [{user_id: String}, {u_id: String}],
   dislikes: [{user_id: String}, {u_id: String}],
   fileUrl: String, // S3 File URL
-  // fileType: String,
-  // fileSize: Number,
 });
 
 const Blog = mongoose.model('Blog', BlogSchema);

@@ -57,7 +57,7 @@ const Details = () => {
           </header>
           <main className='details_body'>
             <div style={{display: "flex", flexDirection: "column"}}>
-            {post.fileUrl? <img src={post.fileUrl} alt={post.title} style={{height: "50vh", width: "auto"}}/>: ""}
+            {post.fileUrl? <img src={post.fileUrl} alt={post.title} style={{maxHeight: "50vh", width: "auto"}}/>: ""}
             <p>{(post.content)}</p>
             </div>
             </main>
