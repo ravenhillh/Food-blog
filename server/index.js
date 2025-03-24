@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+const { S3, PutObjectCommand } = require("aws-sdk");
 const fs = require("fs");
 
 const app = express();
 
-const s3Client = new S3Client({
+const s3Client = new S3({
   region: "us-east-2",
   credentials: {
     accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
