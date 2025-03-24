@@ -44,9 +44,6 @@ export const addNewPost = (formData, navigate) => {
     fetch("/post/add", {
         method: "POST",
         body: formData,
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
     })
         .then((res) => res.json(res))
         .then((data) => {

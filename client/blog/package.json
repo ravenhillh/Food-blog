@@ -12,8 +12,9 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
     "@teamhanko/hanko-elements": "^0.11.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "axios": "^1.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
