@@ -2,17 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-const { S3, PutObjectCommand } = require("aws-sdk");
+const S3 = require("aws-sdk");
 const fs = require("fs");
 
 const app = express();
 
 const s3Client = new S3({
   region: "us-east-2",
-  credentials: {
-    accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
-    secretAccessKey: "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",
-  },
+  accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
+  secretAccessKey: "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",
 });
 
 require("dotenv").config();
@@ -70,7 +68,7 @@ app.post("/post/add", upload.single("file"), async (req, res) => {
       ContentType: mimetype,
     };
 
-    return s3Client.send(new PutObjectCommand(uploadParams));
+    return s3Client.upload((uploadParams)).promise();
   }
   const response = await uploadFile(file.buffer, title, file.mimetype);
   //   const fileContent = fs.readFileSync(req.file.path);

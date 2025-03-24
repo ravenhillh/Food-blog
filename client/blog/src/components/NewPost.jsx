@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { addNewPost } from "../utils/util";
+import { addNewPost } from "../utils/util";
 import { Hanko } from "@teamhanko/hanko-elements";
 const hankoApi = "https://b1ab3632-446a-4d30-a451-58761db04408.hanko.io";
-import axios from "axios";
+// import axios from "axios";
 
 
 const NewPost = () => {
@@ -90,12 +90,11 @@ const NewPost = () => {
     formData.append("content", formatRecipe(content));
     formData.append("date", formatDate())
     formData.append("u_id", localStorage.getItem("u_id"))
-    // addNewPost(
-    //   formData,
-    //   navigate
-    // );
-    await axios.post("/post/add", formData, { headers: {'Content-Type': 'multipart/form-data'}})
-    .then(() => console.log('success')).catch(() => console.log('error'))
+    addNewPost(
+      formData,
+      navigate
+    );
+   
     setContent("");
     setTitle("");
     setSelectedFile(null);
