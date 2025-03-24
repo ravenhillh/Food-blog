@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const app = express();
 
-const s3 = new AWS.S3({
+const s3Client = new AWS.S3({
   accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
   secretAccessKey: "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",
   region: "us-east-2",
@@ -15,6 +15,7 @@ const s3 = new AWS.S3({
 
 require("dotenv").config();
 
+const storage = multer.memoryStorage()
 const upload = multer({ storage: storage });
 
 const { Blog } = require("./db/index");
