@@ -7,12 +7,11 @@ const fs = require("fs");
 
 const app = express();
 
-const s3Client = new S3({
+const s3Client = new S3.S3({
   region: "us-east-2",
   accessKeyId: "AKIAVRUVTGIZNBWL3Q6O",
   secretAccessKey: "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",
 });
-
 require("dotenv").config();
 
 const storage = multer.memoryStorage();
