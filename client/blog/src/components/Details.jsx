@@ -55,7 +55,10 @@ const Details = () => {
                   </div>
               </div>
           </header>
-          <main className='details_body'>{(post.content)}</main>
+          <main className='details_body'>
+            {(post.content)}
+            {post.fileUrl? <img src={post.fileUrl} alt={post.title}/>: ""}
+            </main>
       </div>
   );
 };
