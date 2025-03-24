@@ -40,13 +40,12 @@ export const postReaction = (slug, type) => {
         .catch((err) => console.error(err));
 };
 
-export const addNewPost = (u_id, title, content, date, navigate) => {
+export const addNewPost = (formData, navigate) => {
     fetch("/post/add", {
         method: "POST",
-        body: JSON.stringify({ u_id, title, content, date }),
+        body: formData,
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
         },
     })
         .then((res) => res.json(res))

@@ -25,13 +25,23 @@ const NewPost = () => {
     });
   };
 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
   const handleFileChange = (event) => {
-    const file = event.target.files[0]; // Get the first file
+    const file = event.target.files[0];
+
     if (file) {
+      if (file.size > MAX_FILE_SIZE) {
+        alert("File size exceeds 5MB. Please choose a smaller file.");
+        setSelectedFile(null);
+        setPreview(null);
+        event.target.value = ""; // Reset input field
+        return;
+      }
+  
       setSelectedFile(file);
-      setPreview(URL.createObjectURL(file)); // Generate a preview URL
-    }
-  };
+      setPreview(URL.createObjectURL(file)); //
+  }
+}
 
   const formatRecipe = (recipe) => {
     return recipe
@@ -72,12 +82,14 @@ const NewPost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //👇🏻 adds the new post
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("title", title);
+    formData.append("content", formatRecipe(content));
+    formData.append("date", formatDate())
+    formData.append("u_id", localStorage.getItem("u_id"))
     addNewPost(
-      localStorage.getItem("u_id"),
-      title,
-      formatRecipe(content),
-      formatDate(),
-      selectedFile,
+      formData,
       navigate
     );
     setContent("");
