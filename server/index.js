@@ -15,17 +15,7 @@ const s3 = new AWS.S3({
 
 require("dotenv").config();
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, "/post/add"); // Temporary storage
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + "-" + file.originalname);
-    },
-  }),
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB file size limit
-});
+const upload = multer({ storage: storage });
 
 const { Blog } = require("./db/index");
 const PORT = 4000;
@@ -62,26 +52,39 @@ app.get("/posts", (req, res) => {
 
 app.post("/post/add", upload.single("file"), async (req, res) => {
   const { u_id, title, content, date } = req.body;
-  if (!title || !content) {
-    return res
-      .status(400)
-      .json({ error: "Missing required fields, add a picture" });
-  }
-  const fileContent = fs.readFileSync(req.file.path);
-  const fileExtension = req.file.originalname.split(".").pop();
-  const s3FileName = `${Date.now()}-${req.file.originalname}`;
+  const file = req.file;
+  //   if (!title || !content) {
+  //     return res
+  //       .status(400)
+  //       .json({ error: "Missing required fields, add a picture" });
+  //   }
 
-  const params = {
-    Bucket: "bucket-food-blog-jh",
-    Key: s3FileName,
-    Body: fileContent,
-    ContentType: req.file.mimetype,
-    ACL: "public-read", // Allows public access to the file
-  };
-  const s3UploadResponse = await s3.upload(params).promise();
+  function uploadFile(fileBuffer, fileName, mimetype) {
+    const uploadParams = {
+      Bucket: "bucket-food-blog-jh",
+      Body: fileBuffer,
+      Key: fileName,
+      ContentType: mimetype,
+    };
+
+    return s3Client.send(new PutObjectCommand(uploadParams));
+  }
+  const response = await uploadFile(file.buffer, title, file.mimetype);
+//   const fileContent = fs.readFileSync(req.file.path);
+//   const fileExtension = req.file.originalname.split(".").pop();
+//   const s3FileName = `${Date.now()}-${req.file.originalname}`;
+
+//   const params = {
+//     Bucket: "bucket-food-blog-jh",
+//     Key: s3FileName,
+//     Body: fileContent,
+//     ContentType: req.file.mimetype,
+//     ACL: "public-read", // Allows public access to the file
+//   };
+//   const s3UploadResponse = await s3.upload(params).promise();
 
   // Remove file from local storage after upload
-  fs.unlinkSync(req.file.path);
+//   fs.unlinkSync(req.file.path);
 
   const postObject = {
     u_id,
@@ -92,9 +95,9 @@ app.post("/post/add", upload.single("file"), async (req, res) => {
     published_date: date,
     likes: [],
     dislikes: [],
-    fileUrl: s3UploadResponse.Location, // S3 URL
-    fileType: req.file.mimetype,
-    fileSize: req.file.size,
+    fileUrl: response.Location, // S3 URL
+    // fileType: req.file.mimetype,
+    // fileSize: req.file.size,
   };
   Blog.create(postObject)
     .then(() => {
