@@ -19,7 +19,10 @@ const BlogSchema = new mongoose.Schema({
   content: String,
   published_date: String,
   likes: [{user_id: String}, {u_id: String}],
-  dislikes: [{user_id: String}, {u_id: String}]
+  dislikes: [{user_id: String}, {u_id: String}],
+  fileUrl: String, // S3 File URL
+  fileType: String,
+  fileSize: Number,
 });
 
 const Blog = mongoose.model('Blog', BlogSchema);
