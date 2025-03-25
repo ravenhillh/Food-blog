@@ -55,7 +55,7 @@ const Details = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "flex-start",
             gap: "20px",
           }}
         >
@@ -72,7 +72,14 @@ const Details = () => {
           <div>
             <p className="details_date">Posted on {post.published_date}</p>
           </div>
-          <p>{post.content}</p>
+          <p>
+          {post.content.split("\n").map((line, i) => (
+                    <div key={i}>
+                      {line}
+                      <br />
+                    </div>
+                  ))}
+          </p>
         </div>
       </main>
     </div>
