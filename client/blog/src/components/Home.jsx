@@ -216,7 +216,7 @@ const Home = () => {
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
               <Link to={`/post/${post.slug}`} className="post">
-                <h2 id="post-header" className="post_title">{post.title}</h2>
+                <h2 id="post-title" className="post_title">{post.title}</h2>
                 <p style={{ textDecoration: "none", color: "black" }}>
                   {formatDate(post.published_date)}
                 </p>
