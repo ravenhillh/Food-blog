@@ -29,9 +29,9 @@ const Details = () => {
       <header className="details_header">
         <Link to="/" className="logo" style={{ paddingLeft: "20px" }}>
           <h2 style={{ fontSize: "4em" }}>🍳</h2>
-          <h2 style={{fontFamily: "Winky Sans", fontSize: "30px", fontWeight: "200"}}>Recipes & Stories</h2>
         </Link>
         <div className="post_details">
+          <h2 style={{fontFamily: "Winky Sans", fontSize: "30px", fontWeight: "200"}}>Recipes & Stories</h2>
           <div className="reactions-group">
             <button
               className="reactBtn"
