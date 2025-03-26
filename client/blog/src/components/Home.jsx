@@ -47,9 +47,21 @@ const Home = () => {
           }}
           className="navbar"
         >
-          <Link to="/" className="logo" style={{display:"flex", gap: "2rem", alignItems: "center"}}>
+          <Link
+            to="/"
+            className="logo"
+            style={{ display: "flex", gap: "2rem", alignItems: "center" }}
+          >
             <h2 style={{ fontSize: "3em" }}>🌿</h2>
-          <h2 style={{fontFamily: "Winky Sans", fontSize: "30px", fontWeight: "200"}}>Recipes & Stories</h2>
+            <h2
+              style={{
+                fontFamily: "Winky Sans",
+                fontSize: "30px",
+                fontWeight: "200",
+              }}
+            >
+              Recipes & Stories
+            </h2>
           </Link>
           <div
             style={{ display: "flex", gap: "2rem", alignItems: "center" }}
@@ -100,10 +112,18 @@ const Home = () => {
         </nav>
       </div>
       <nav className="hamburger-nav">
-      <div style={{display:"flex", gap: "1rem", alignItems: "center"}}>
-            <h2 style={{ fontSize: "3em" }}>🌿</h2>
-          <h2 style={{fontFamily: "Winky Sans", fontSize: "20px", fontWeight: "200"}}>Recipes & Stories</h2>
-          </div>
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          <h2 style={{ fontSize: "3em" }}>🌿</h2>
+          <h2
+            style={{
+              fontFamily: "Winky Sans",
+              fontSize: "20px",
+              fontWeight: "200",
+            }}
+          >
+            Recipes & Stories
+          </h2>
+        </div>
         <div className="hamburger-menu">
           <div className="hamburger-icon" onClick={toggleMenu}>
             <span></span>
@@ -216,7 +236,18 @@ const Home = () => {
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
               <Link to={`/post/${post.slug}`} className="post">
-                <h2 id="post-title" className="post_title">{post.title}</h2>
+                <h2 id="post-title" className="post_title">
+                  {post.title}
+                </h2>
+                {post.fileUrl ? (
+                  <img
+                    src={post.fileUrl}
+                    alt={post.title}
+                    style={{ maxHeight: "50vh", width: "auto" }}
+                  />
+                ) : (
+                  ""
+                )}
                 <p style={{ textDecoration: "none", color: "black" }}>
                   {formatDate(post.published_date)}
                 </p>
