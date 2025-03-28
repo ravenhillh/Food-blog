@@ -5,6 +5,7 @@ import { fetchAllPosts } from "../utils/util";
 // import Photos from "./Photos";
 import Contacts from "./Contacts";
 import Beach from "/assets/hawaii.jpeg";
+import chefImage from "/assets/dadpic3.jpg";
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -218,51 +219,120 @@ const Home = () => {
         </div>
       </div>
       <main className="main">
-        {/* <Bio />
-        <Photos /> */}
-
-        <div className="posts_container">
-          <h2
-            className="title"
-            style={{ fontWeight: "200", fontFamily: "Winky Sans" }}
-          >
-            Latest Posts
-          </h2>
-          {posts?.map((post) => (
-            //add in photo import and storage on s2 buckets
-            //get a good photo of dad
+        <div
+          className="double-containers"
+          style={{ display: "flex", flexDirection: "row", gap: "20px" }}
+        >
+          <div className="posts_container">
+            <h2
+              className="title"
+              style={{
+                fontWeight: "200",
+                fontFamily: "Winky Sans",
+                marginTop: "20px",
+              }}
+            >
+              Latest Posts
+            </h2>
+            {posts?.map((post) => (
+              //add adjacent bar with search and dad photo
+              //get a good photo of dad
+              <div
+                key={post.post_id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "15px",
+                }}
+              >
+                <Link to={`/post/${post.slug}`} className="post">
+                  <h2 id="post-title" className="post_title">
+                    {post.title}
+                  </h2>
+                  {post.fileUrl ? (
+                    <img
+                      src={post.fileUrl}
+                      alt={post.title}
+                      style={{ maxHeight: "50vh", width: "auto" }}
+                    />
+                  ) : (
+                    ""
+                  )}
+                  <p style={{ textDecoration: "none", color: "black" }}>
+                    {formatDate(post.published_date)}
+                  </p>
+                  <p style={{ textDecoration: "none", color: "black" }}>
+                    {post.content.split("\n").map((line, i) => (
+                      <div key={i}>
+                        {line}
+                        <br />
+                      </div>
+                    ))}
+                  </p>
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="search_container">
+            <h2 style={{ paddingBottom: "20px", fontWeight: "100" }}>
+              Explore the recipes
+            </h2>
             <div
+              className="search"
+              style={{ paddingBottom: "20px", display: "flex", gap: "10px" }}
+            >
+              <input
+                type="search"
+                placeholder="Search posts..."
+                className="search_bar"
+                style={{
+                  padding: "8px",
+                  fontSize: "14px",
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                  width: "180px",
+                  outline: "none",
+                }}
+              />
+              <button
+                style={{
+                  padding: "8px",
+                  fontSize: "14px",
+                  borderRadius: "8px",
+                  border: "none",
+                  backgroundColor: "#4a90e2",
+                  color: "white",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
+                }}
+              >
+                Search
+              </button>
+            </div>{" "}
+            <img
+              src={chefImage}
+              alt="picture of chef jon"
+              style={{ width: "15vw", height: "auto", borderRadius: "10px" }}
+            />
+            {posts.map((post) => {
+              <div
               key={post.post_id}
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "5px",
+              }}
             >
               <Link to={`/post/${post.slug}`} className="post">
-                <h2 id="post-title" className="post_title">
+                <p>
                   {post.title}
-                </h2>
-                {post.fileUrl ? (
-                  <img
-                    src={post.fileUrl}
-                    alt={post.title}
-                    style={{ maxHeight: "50vh", width: "auto" }}
-                  />
-                ) : (
-                  ""
-                )}
-                <p style={{ textDecoration: "none", color: "black" }}>
-                  {formatDate(post.published_date)}
-                </p>
-                <p style={{ textDecoration: "none", color: "black" }}>
-                  {post.content.split("\n").map((line, i) => (
-                    <div key={i}>
-                      {line}
-                      <br />
-                    </div>
-                  ))}
                 </p>
               </Link>
             </div>
-          ))}
+            })}
+          </div>
         </div>
+
         <Contacts />
       </main>
     </div>
