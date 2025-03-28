@@ -5,7 +5,7 @@ import { fetchAllPosts } from "../utils/util";
 // import Photos from "./Photos";
 import Contacts from "./Contacts";
 import Beach from "/assets/hawaii.jpeg";
-import chefImage from "/assets/dadpic3.jpg";
+import chefImage from "/assets/dadpic4.jpg";
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -258,7 +258,13 @@ const Home = () => {
                   ) : (
                     ""
                   )}
-                  <p style={{ textDecoration: "none", color: "black", padding: "10px 0px" }}>
+                  <p
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      padding: "10px 0px",
+                    }}
+                  >
                     {formatDate(post.published_date)}
                   </p>
                   <p style={{ textDecoration: "none", color: "black" }}>
@@ -275,7 +281,7 @@ const Home = () => {
           </div>
           <div className="search_container">
             <h2 style={{ paddingBottom: "20px", fontWeight: "100" }}>
-              Explore the recipes
+              Explore the blog
             </h2>
             <div
               className="search"
@@ -317,24 +323,33 @@ const Home = () => {
             />
             {posts?.map((post) => (
               <div
-              key={post.post_id}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "5px",
-              }}
-            >
-              <Link to={`/post/${post.slug}`} className="post">
-                <p>
-                  {post.title}
-                </p>
-              </Link>
-            </div>
+                key={post.post_id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "5px",
+                }}
+              >
+                <Link to={`/post/${post.slug}`} className="post">
+                  <p>{post.title}</p>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
 
         <Contacts />
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "20px",
+            width: "100%",
+          }}
+        >
+          Copyright © 2024 Jon Hill. All Rights Reserved.
+        </p>
       </main>
     </div>
   );
