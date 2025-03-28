@@ -258,7 +258,7 @@ const Home = () => {
                   ) : (
                     ""
                   )}
-                  <p style={{ textDecoration: "none", color: "black" }}>
+                  <p style={{ textDecoration: "none", color: "black", padding: "10px 0px" }}>
                     {formatDate(post.published_date)}
                   </p>
                   <p style={{ textDecoration: "none", color: "black" }}>
@@ -295,6 +295,7 @@ const Home = () => {
                 }}
               />
               <button
+                className="search_button"
                 style={{
                   padding: "8px",
                   fontSize: "14px",
@@ -314,7 +315,7 @@ const Home = () => {
               alt="picture of chef jon"
               style={{ width: "15vw", height: "auto", borderRadius: "10px" }}
             />
-            {posts.map((post) => {
+            {posts?.map((post) => (
               <div
               key={post.post_id}
               style={{
@@ -329,7 +330,7 @@ const Home = () => {
                 </p>
               </Link>
             </div>
-            })}
+            ))}
           </div>
         </div>
 
