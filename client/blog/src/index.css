@@ -58,6 +58,10 @@
   border-radius: 15px;
   padding: 55px;
 }
+.double-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;}
 .post {
   height: 100%;
   padding: 20px;
@@ -326,6 +330,11 @@
 } */
 
 @media screen and (max-width: 768px) {
+  .double-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
   .hamburger-nav {
     display: flex;
   }

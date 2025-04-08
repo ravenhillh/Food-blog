@@ -220,8 +220,7 @@ const Home = () => {
       </div>
       <main className="main">
         <div
-          className="double-containers"
-          style={{ display: "flex", flexDirection: "row", gap: "20px" }}
+          className="double-container"
         >
           <div className="posts_container">
             <h2
