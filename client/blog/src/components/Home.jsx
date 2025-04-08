@@ -252,7 +252,7 @@ const Home = () => {
                     <img
                       src={post.fileUrl}
                       alt={post.title}
-                      style={{ maxHeight: "50vh", width: "auto" }}
+                      style={{ maxHeight: "50vh", width: "100%", objectFit: "contain" }}
                     />
                   ) : (
                     ""
