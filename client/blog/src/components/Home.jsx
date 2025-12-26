@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllPosts } from "../utils/util";
-// import Bio from "./Bio";
-// import Photos from "./Photos";
+
 import Contacts from "./Contacts";
 import Beach from "/assets/hawaii.jpeg";
-import chefImage from "/assets/dadpic4.jpg";
+import chefImage from "/assets/IMG_1281.jpeg";
 
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -82,7 +81,7 @@ const Home = () => {
               </h2>
             </Link>
             <Link
-              to="/contacts"
+              to="/contact"
               style={{ textDecoration: "none", color: "black" }}
             >
               <h2 style={{ fontFamily: "Winky Sans", fontWeight: "100" }}>
@@ -219,9 +218,7 @@ const Home = () => {
         </div>
       </div>
       <main className="main">
-        <div
-          className="double-container"
-        >
+        <div className="double-container">
           <div className="posts_container">
             <h2
               className="title"
@@ -234,8 +231,6 @@ const Home = () => {
               Latest Posts
             </h2>
             {posts?.map((post) => (
-              //add adjacent bar with search and dad photo
-              //get a good photo of dad
               <div
                 key={post.post_id}
                 style={{
@@ -252,7 +247,11 @@ const Home = () => {
                     <img
                       src={post.fileUrl}
                       alt={post.title}
-                      style={{ maxHeight: "50vh", width: "100%", objectFit: "contain" }}
+                      style={{
+                        maxHeight: "50vh",
+                        width: "100%",
+                        objectFit: "contain",
+                      }}
                     />
                   ) : (
                     ""
