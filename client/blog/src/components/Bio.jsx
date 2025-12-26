@@ -5,6 +5,13 @@ import { useState, useEffect } from "react";
 const Bio = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const toggleMenu = () => {
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
+  };
+
   useEffect(() => {
     if (localStorage.getItem("loggedIn")) {
       setLoggedIn(true);
