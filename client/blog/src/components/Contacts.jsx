@@ -1,8 +1,16 @@
 import { MdEmail } from "react-icons/md";
 import { FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Contacts = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("loggedIn")) {
+      setLoggedIn(true);
+    }
+  }, []);
   return (
     <div>
       <div className="navbar-regular">

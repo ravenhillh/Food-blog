@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Photos = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("loggedIn")) {
+      setLoggedIn(true);
+    }
+  }, []);
   const foodPics = import.meta.glob("/public/foodpics/*");
   const imageUrls = Object.keys(foodPics).map((path) =>
     path.replace("/public", "")

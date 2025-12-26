@@ -1,7 +1,16 @@
 import chefImage from "/assets/IMG_5746.jpg";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Bio = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("loggedIn")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   return (
     <div id="bio-container" style={{ paddingBottom: "5rem" }}>
       <div className="navbar-regular">
