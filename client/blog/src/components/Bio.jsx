@@ -1,4 +1,5 @@
 import chefImage from "/assets/IMG_5746.jpg";
+import { Link } from "react-router-dom";
 
 const Bio = () => {
   return (

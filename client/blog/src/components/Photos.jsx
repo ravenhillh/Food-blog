@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Photos = () => {
   const foodPics = import.meta.glob("/public/foodpics/*");
   const imageUrls = Object.keys(foodPics).map((path) =>
