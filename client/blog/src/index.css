@@ -178,7 +178,8 @@
 
 .bio-container {
   padding-bottom: 100px;
-  padding-left: 50px;
+  margin-left: 50px;
+  background-color: papayawhip;
 }
 
 .bio-header {
