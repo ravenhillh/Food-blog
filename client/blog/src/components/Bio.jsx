@@ -19,7 +19,7 @@ const Bio = () => {
   }, []);
 
   return (
-    <div id="bio-container" style={{ paddingBottom: "5rem" }}>
+    <div className="bio-container" style={{ paddingBottom: "5rem" }}>
       <div className="navbar-regular">
         <nav
           style={{
