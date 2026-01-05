@@ -61,7 +61,8 @@
 .double-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;}
+  gap: 20px;
+}
 .post {
   height: 100%;
   padding: 20px;
@@ -73,7 +74,7 @@
 .post_title {
   font-weight: 400;
   color: #000;
-  font-family: 'Winky Sans';
+  font-family: "Winky Sans";
 }
 .details_header {
   width: 100%;
@@ -177,6 +178,7 @@
 
 .bio-container {
   padding-bottom: 100px;
+  padding-left: 50px;
 }
 
 .bio-header {
@@ -253,7 +255,7 @@
   width: 100%;
   height: 2px;
   background-color: black;
-  transition: all .3 ease-in-out;
+  transition: all 0.3 ease-in-out;
 }
 
 .menu-links {
@@ -264,7 +266,7 @@
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all .3 ease-in-out;
+  transition: all 0.3 ease-in-out;
 }
 
 .menu-links a {
@@ -274,7 +276,7 @@
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
-  transition: all .3 ease-in-out;
+  transition: all 0.3 ease-in-out;
 }
 
 .menu-links li {
@@ -286,7 +288,7 @@
 }
 
 .hamburger-icon.open span:first-child {
-  transform: rotate(45deg) translate(10px, 5px)
+  transform: rotate(45deg) translate(10px, 5px);
 }
 
 .hamburger-icon.open span:nth-child(2) {
@@ -294,7 +296,7 @@
 }
 
 .hamburger-icon.open span:last-child {
-  transform: rotate(-45deg) translate(10px, -5px)
+  transform: rotate(-45deg) translate(10px, -5px);
 }
 
 .hamburger-icon span:first-child {
@@ -371,7 +373,7 @@
     text-align: left;
     white-space: pre-line;
   }
- 
+
   .landing-box {
     display: flex;
     justify-content: center;

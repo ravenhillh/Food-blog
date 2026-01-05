@@ -6,6 +6,7 @@ import Contacts from "./Contacts";
 import Beach from "/assets/hawaii.jpeg";
 import chefImage from "/assets/IMG_1281.jpeg";
 
+//DELETE THE DAILY DOODLE IMAGES FROM FOOD-BLOG BUCKET AND CHANGE BUCKET???
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -336,7 +337,6 @@ const Home = () => {
           </div>
         </div>
 
-        <Contacts />
         <p
           style={{
             display: "flex",
